@@ -11,9 +11,7 @@ function Header() {
 
   return (
     <div className="p-5 flex justify-between items-center font-bold bg-secondary text-lg shadow-sm">
-      {console.log(data)}
-
-      <img src={"./logo.svg"} />
+      <img src={"/logo.svg"} />
 
       <ul className=" hidden  md:flex gap-4  ">
         {

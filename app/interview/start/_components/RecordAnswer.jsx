@@ -3,9 +3,10 @@ import { addfeedback } from "@/app/reduxProvider/interviewDetails";
 import { Button } from "@/components/ui/button";
 import chatSession from "@/utils/GeminiAiModel";
 import { Mic } from "lucide-react";
-import Link from "next/link";
+
 import React, { useEffect, useState } from "react";
 import useSpeechToText from "react-hook-speech-to-text";
+
 import { useDispatch } from "react-redux";
 
 import Webcam from "react-webcam";
@@ -32,8 +33,11 @@ function RecordAnswer({ questionForSubmission, active }) {
 
   const handleAnswer = () => {
     if (isRecording) {
+      console.log("workig");
+
       stopSpeechToText();
     } else {
+      console.log("not working");
       startSpeechToText();
     }
   };
@@ -82,7 +86,7 @@ function RecordAnswer({ questionForSubmission, active }) {
         </Button>
       )}
       <img
-        src={"./webcam.svg"}
+        src={"/webcam.svg"}
         alt=""
         height={200}
         width={200}
@@ -90,7 +94,11 @@ function RecordAnswer({ questionForSubmission, active }) {
       />
 
       <Webcam mirrored style={{ height: 300, width: "100%", zIndex: 10 }} />
-      <Button variant="outline" className="my-10" onClick={handleAnswer}>
+      <Button
+        variant="outline"
+        className="my-10"
+        onClick={isRecording ? stopSpeechToText : startSpeechToText}
+      >
         {isRecording ? (
           <h2 className="text-red-500">
             <Mic />
